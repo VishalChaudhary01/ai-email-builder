@@ -1,5 +1,7 @@
 import { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { api } from "@/convex/_generated/api";
+import { fetchMutation } from "convex/nextjs";
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -12,5 +14,21 @@ export const authOptions: AuthOptions = {
   pages: {
     signIn: "/signin",
   },
-  callbacks: {},
+  callbacks: {
+    async signIn({ user }) {
+      if (user) { 
+        try {
+          await fetchMutation(api.users.createUser, {
+            name: user.name || "",
+            email: user.email || "",
+            image: user.image || "",
+          });
+        } catch (error) {
+          console.error("Error creating user: ", error);
+          throw new Error("Failed to create user");
+        }
+      }
+      return true;
+    }
+  },
 };
