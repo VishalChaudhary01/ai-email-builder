@@ -1,4 +1,4 @@
-import { IElementList } from "@/types";
+import { IElement } from "@/types";
 import {
   Frame,
   Image,
@@ -9,7 +9,7 @@ import {
   Twitter,
 } from "lucide-react";
 
-export const elementList: IElementList[] = [
+export const elementList: IElement[] = [
   {
     icon: RectangleEllipsis,
     label: "Button",

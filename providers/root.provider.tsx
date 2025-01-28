@@ -5,8 +5,8 @@ import React, { useState } from "react";
 import { ILayout, IScreenSize } from "@/types";
 import { convexClient } from "./convex.provider";
 import { ScreenSizeContext } from "@/context/screen.context";
-import { EmailTemplateContext } from "@/context/emailTemplate.context";
 import { DragDropLayoutContext } from "@/context/dragdrop.layout.context";
+import { EmailTemplateContext } from "@/context/emailTemplate.context";
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
   const [screenSize, setScreenSize] = useState<IScreenSize>("Desktop");
@@ -18,9 +18,9 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
       <ConvexProvider client={convexClient}>
         <ScreenSizeContext.Provider value={{ screenSize, setScreenSize }}>
           <DragDropLayoutContext.Provider value={{ selectedLayout, setSelectedLayout }}>
-            <EmailTemplateContext value={{ emailTemplate, setEmailTemplate }}>
+            <EmailTemplateContext.Provider value={{ emailTemplate, setEmailTemplate }}>
             {children}
-            </EmailTemplateContext>
+            </EmailTemplateContext.Provider>
           </DragDropLayoutContext.Provider>
         </ScreenSizeContext.Provider>
       </ConvexProvider>

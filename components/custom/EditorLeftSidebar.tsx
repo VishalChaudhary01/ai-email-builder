@@ -2,7 +2,7 @@
 import { elementList } from "@/constants/element.constant";
 import { layouts } from "@/constants/layout.contstant";
 import { useDragDropLayout } from "@/context/dragdrop.layout.context";
-import { IElementList, ILayout } from "@/types";
+import { IElement, ILayout } from "@/types";
 
 export function EditorLeftSidebar() {
   const { setSelectedLayout } = useDragDropLayout();
@@ -38,7 +38,7 @@ export function EditorLeftSidebar() {
         Elements
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-        {elementList.map((element: IElementList) => (
+        {elementList.map((element: IElement) => (
           <div
             key={element.label}
             className="flex flex-col group/item items-center justify-center border border-dashed p-2 rounded-xl bg-background hover:border-primary/90"

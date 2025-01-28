@@ -93,7 +93,7 @@ export interface SocialIconsElement extends BaseElement {
 }
 
 // Union type for all elements
-export type IElementList =
+export type IElement =
   | ButtonElement
   | TextElement
   | ImageElement
